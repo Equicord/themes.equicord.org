@@ -1,0 +1,26 @@
+name: Fetch Themes
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */4 * * *'
+
+jobs:
+  fetch-themes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Fetch themes from API
+        run: |
+          curl -s https://themes.equicord.org/api/themes -o themes.json
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add themes.json
+          git commit -m 'pull themes'
+          git push
