@@ -59,7 +59,7 @@ export default async function GET(req: NextApiRequest, res: NextApiResponse) {
         });
 
         await page.setViewport({ width: 1920, height: 1080 });
-        await page.goto(`https://worker-name.fafakitty.workers.dev/?css=${encodeURIComponent(url)}`, {
+        await page.goto(`https://worker-name.thororen1234.workers.dev/?css=${encodeURIComponent(url)}`, {
             waitUntil: "networkidle0",
             timeout: 30000
         });
